@@ -6,13 +6,14 @@ class MessagesController < ApplicationController
   end
   
   def create
-    @message = Massage.new(create_params)
+    @message = Message.new(message_params)
     @message.save
     redirect_to root_path , notice: 'メッセージを保存しました'
   end
+
   private
-  def message _params
+  def message_params
     params.require(:message).permit(:name, :body)
   end
-  ##ここまで
+  ## ここまで
 end
